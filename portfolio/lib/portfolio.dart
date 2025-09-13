@@ -101,17 +101,20 @@ class _PortfolioWidgetState extends State<PortfolioWidget> {
                             ProjectItem(
                               icon: Icons.gamepad,
                               title: "Tomorrow Witch Alternative",
-                              subtitle: "Game project developed with Android Native - Kotlin. Using camera to analyze gestures for movement and actions.",
+                              subtitle:
+                                  "Game project developed with Android Native - Kotlin. Using camera to analyze gestures for movement and actions.",
                             ),
                             ProjectItem(
                               icon: Icons.phone_android,
                               title: "Catch The Rainbow Social Media App",
-                              subtitle: "A Social Media App with short videos and features of popular social media.",
+                              subtitle:
+                                  "A Social Media App with short videos and features of popular social media.",
                             ),
                             ProjectItem(
                               icon: Icons.gamepad,
                               title: "Tomorrow Witch",
-                              subtitle: "2D Platformer game project developed with Unity. The game is a puzzle and exploration game. The player will control the main character, a young witch, to overcome challenges and escape the house.",
+                              subtitle:
+                                  "2D Platformer game project developed with Unity. The game is a puzzle and exploration game. The player will control the main character, a young witch, to overcome challenges and escape the house.",
                             ),
                           ],
                           onProjectTap: scrollToProject,
@@ -148,15 +151,9 @@ class _PortfolioWidgetState extends State<PortfolioWidget> {
                               projectKeys["Catch The Rainbow Social Media App"],
                           projectName: "Catch The Rainbow Social Media App",
                           imageUrls: [
-                            LinkTool.getLinkDomain(
-                              "catch_the_rainbow_1.jpg",
-                            ),
-                            LinkTool.getLinkDomain(
-                              "catch_the_rainbow_2.jpg",
-                            ),
-                            LinkTool.getLinkDomain(
-                              "catch_the_rainbow_3.jpg",
-                            ),
+                            LinkTool.getLinkDomain("catch_the_rainbow_1.png"),
+                            LinkTool.getLinkDomain("catch_the_rainbow_2.png"),
+                            LinkTool.getLinkDomain("catch_the_rainbow_3.png"),
                           ],
                           features: [
                             "Android Native - Kotlin",
@@ -171,17 +168,19 @@ class _PortfolioWidgetState extends State<PortfolioWidget> {
                         ProjectDescriptionWidget(
                           key: projectKeys["Tomorrow Witch"],
                           projectName: "Tomorrow Witch",
+                          demoUrl:
+                              "https://notkittens.itch.io/tomorrow-witch",
                           youtubeUrl:
                               "https://www.youtube.com/watch?v=hKYLFoNekPI",
                           imageUrls: [
                             LinkTool.getLinkDomain(
-                              "tomorrow_witch_alternative_1.jpg",
+                              "tomorrow_witch_1.png",
                             ),
                             LinkTool.getLinkDomain(
-                              "tomorrow_witch_alternative_2.jpg",
+                              "tomorrow_witch_2.png",
                             ),
                             LinkTool.getLinkDomain(
-                              "tomorrow_witch_alternative_3.jpg",
+                              "tomorrow_witch_3.png",
                             ),
                           ],
                           features: [
@@ -429,6 +428,8 @@ class ProjectWidget extends StatelessWidget {
 
 class ProjectDescriptionWidget extends StatefulWidget {
   final String projectName;
+  final String? sourceUrl;
+  final String? demoUrl;
   final String? youtubeUrl;
   final List<String> imageUrls;
   final String description;
@@ -437,6 +438,8 @@ class ProjectDescriptionWidget extends StatefulWidget {
   const ProjectDescriptionWidget({
     super.key,
     required this.projectName,
+    this.sourceUrl,
+    this.demoUrl,
     this.youtubeUrl,
     required this.imageUrls,
     required this.description,
@@ -457,7 +460,9 @@ class _ProjectDescriptionWidgetState extends State<ProjectDescriptionWidget> {
     if (widget.youtubeUrl == null) {
       return;
     }
-    final videoId = YoutubePlayerController.convertUrlToId(widget.youtubeUrl ?? "")!;
+    final videoId = YoutubePlayerController.convertUrlToId(
+      widget.youtubeUrl ?? "",
+    )!;
     _controller = YoutubePlayerController.fromVideoId(
       videoId: videoId,
       autoPlay: false,
@@ -500,6 +505,46 @@ class _ProjectDescriptionWidgetState extends State<ProjectDescriptionWidget> {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 16),
+
+            // 👉 Thêm source + demo nếu có
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                if (widget.sourceUrl != null)
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      LinkTool.openLink(widget.sourceUrl!);
+                    },
+                    icon: const Icon(Icons.code),
+                    label: const Text("Source"),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blueGrey.shade700,
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                  ),
+                if (widget.sourceUrl != null && widget.demoUrl != null)
+                  const SizedBox(width: 12),
+                if (widget.demoUrl != null)
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      LinkTool.openLink(widget.demoUrl!);
+                    },
+                    icon: const Icon(Icons.play_arrow),
+                    label: const Text("Demo"),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green.shade600,
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+            const SizedBox(height: 20),
 
             if (widget.features.isNotEmpty) ...[
               Align(

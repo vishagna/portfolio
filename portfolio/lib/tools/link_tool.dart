@@ -12,6 +12,6 @@ class LinkTool {
     }
   
   static String getLinkDomain(String pImageName) {
-    return "https://github.com/vishagna/portfolio/resources/$pImageName";
+    return "https://raw.githubusercontent.com/vishagna/portfolio/main/resources/$pImageName";
   }
 }
