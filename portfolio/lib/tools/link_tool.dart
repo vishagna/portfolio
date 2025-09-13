@@ -10,4 +10,13 @@ class LinkTool {
         throw Exception("Không mở được link: $url");
       }
     }
+  
+  static String getLinkDomain(String pImageName) {
+    try {
+      Uri uri = Uri.parse("https://github.com/vishagna/portfolio/resources/$pImageName");
+      return uri.host;
+    } catch (e) {
+      return "";
+    }
+  }
 }

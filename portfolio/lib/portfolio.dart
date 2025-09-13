@@ -46,7 +46,7 @@ class _PortfolioWidgetState extends State<PortfolioWidget> {
                 children: [
                   ProfileWidget(
                     name: "Lê Văn Vũ",
-                    jobTitle: "Flutter Developer",
+                    jobTitle: "Mobile/Game Developer",
                     description:
                         "Passionate about building mobile apps with Flutter. Love UI/UX and clean architecture.",
                     avatarUrl: "https://picsum.photos/200",
@@ -68,10 +68,9 @@ class _PortfolioWidgetState extends State<PortfolioWidget> {
                       ),
                     ],
                     archivements: const [
-                      "Developed 5+ Flutter apps with 10,000+ downloads",
-                      "Bachelor’s in Computer Science from XYZ University",
-                      "Winner of ABC Hackathon 2023",
-                      "Published articles on Medium about Flutter",
+                      "Top 34 best scientific research groups of the Faculty in 2024",
+                      "Claimed the badge of postman- 30 days testing challenge for developer",
+                      "Received scholarship to encourage learning",
                     ],
                     skills: const [
                       "Room Database",
@@ -117,12 +116,12 @@ class _PortfolioWidgetState extends State<PortfolioWidget> {
                         ),
                         SizedBox(height: 24),
                         ProjectDescriptionWidget(
-                          key: projectKeys["Website cá nhân"],
-                          projectName: "Unity Game Project",
+                          key: projectKeys["TomorrowWitchAlternative"],
+                          projectName: "Tomorrow Witch Alternative",
                           youtubeUrl:
-                              "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+                              "https://www.youtube.com/watch?v=hKYLFoNekPI",
                           imageUrls: [
-                            "https://picsum.photos/400/200",
+                            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjkTpd1x5RKx_stIPW0cRaqhR2I6AA7-YId6vxg1igceiGoz3pc0cSaRCMPMxGb_xcQp5zDX44RVxucf74_M7JDJ-H_PFGRv-T7eg3jYhEk26x6fAPzcvUcNEBv9s6vDhd2QnE2xJnSBpV2jzjav3qVLTX68abKXEDt_OJrWc4E6IsOfdB0RQBKATCA_Jmx/s1600/Screenshot_20250210_145219.jpg",
                             "https://picsum.photos/401/200",
                             "https://picsum.photos/402/200",
                           ],
@@ -132,7 +131,7 @@ class _PortfolioWidgetState extends State<PortfolioWidget> {
                             "Tối ưu hiệu năng cho trải nghiệm tốt nhất",
                           ],
                           description:
-                              "Đây là một dự án Unity game. Mục tiêu là xây dựng gameplay mượt mà, UI thân thiện và tối ưu hiệu năng.",
+                              "Dự án game phát triển bằng Android Native - Kotlin. Sử dụng camera phân tích cử chỉ để di chuyển và hành động.",
                         ),
                       ],
                     ),
@@ -253,7 +252,7 @@ if (archivements.isNotEmpty) ...[
   Align(
     alignment: Alignment.centerLeft,
     child: Text(
-      "Thành tựu",
+      "Archivements",
       style: Theme.of(context).textTheme.titleMedium?.copyWith(
             fontWeight: FontWeight.bold,
           ),
@@ -298,7 +297,7 @@ if (archivements.isNotEmpty) ...[
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "Kỹ năng",
+                    "Skills",
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
@@ -616,6 +615,16 @@ class ProgrammingLanguageWidget extends StatelessWidget {
       "icon": FontAwesomeIcons.code,
       "color": Colors.pink.shade700,
     },
+    {
+      "name": "C#",
+      "icon": FontAwesomeIcons.code,
+      "color": Colors.purple.shade700,
+    },
+    {
+      "name": "GDScript",
+      "icon": FontAwesomeIcons.code,
+      "color": Colors.teal.shade700,
+    },
   ];
   ProgrammingLanguageWidget({super.key});
 
@@ -753,22 +762,22 @@ class JobExperienceWidget extends StatelessWidget {
     final jobs = [
       {
         "icon": FontAwesomeIcons.server,
-        "name": "Nhân viên IT phần mềm",
+        "name": "Software IT staff - VISION International Company",
         "description":
-            "Phụ trách hệ thống quản lý dữ liệu nội bộ công ty Đài Loan có chi nhánh tại Việt Nam. Bảo trì và nâng cấp server. Quản trị hệ thống mạng.",
+            "In charge of the company's internal data management system. Server maintenance and upgrade. Network system administration.",
         "time": "11/2024 - 01/2025",
       },
       {
         "icon": Icons.phone_android,
-        "name": "Mobile Developer",
+        "name": "Mobile Developer - InMobi Company",
         "description":
-            "Phát triển ứng dụng âm nhạc trên mobile với Flutter, Android Native và Unity làm trò chơi tích hợp. Lập trình giao diện và hành vi tại client, kết nối với bên server để hoàn thiện ứng dụng.",
+            "Develop mobile music applications with Flutter, Android Native. Integrate Unity into Android Native Fragment. Program interface and behavior at the client, connect to the server to complete the application.",
         "time": "02/2025 - 05/2025",
       },
       {
         "icon": Icons.computer,
         "name": "Game 2D Unity",
-        "description": "Phát triển trò chơi độc lập với Unity",
+        "description": "Indie Game Development with Unity.",
         "time": "06/2025 - now",
       },
     ];
