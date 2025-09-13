@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/elements/hover_list_type.dart';
 import 'package:portfolio/elements/portfolio_card.dart';
+import 'package:portfolio/elements/scroll_to_top_button.dart';
 import 'package:portfolio/tools/link_tool.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
@@ -17,9 +18,9 @@ class _PortfolioWidgetState extends State<PortfolioWidget> {
 
   // list key cho mỗi project
   final Map<String, GlobalKey> projectKeys = {
-    "Website cá nhân": GlobalKey(),
-    "Ứng dụng di động": GlobalKey(),
-    "Trò chơi Unity": GlobalKey(),
+    "Tomorrow Witch Alternative": GlobalKey(),
+    "Catch The Rainbow Social Media App": GlobalKey(),
+    "Tomorrow Witch": GlobalKey(),
   };
 
   void scrollToProject(String title) {
@@ -88,6 +89,7 @@ class _PortfolioWidgetState extends State<PortfolioWidget> {
                   Expanded(
                     child: Column(
                       children: [
+                        // const ScrollToTopDemo(),
                         ProgrammingLanguageWidget(),
                         SizedBox(height: 24),
                         EngineFrameworkWidget(),
@@ -97,41 +99,98 @@ class _PortfolioWidgetState extends State<PortfolioWidget> {
                         ProjectWidget(
                           projects: [
                             ProjectItem(
-                              icon: Icons.web,
-                              title: "Website cá nhân",
-                              subtitle: "Mô tả ngắn về dự án...",
+                              icon: Icons.gamepad,
+                              title: "Tomorrow Witch Alternative",
+                              subtitle: "Game project developed with Android Native - Kotlin. Using camera to analyze gestures for movement and actions.",
                             ),
                             ProjectItem(
                               icon: Icons.phone_android,
-                              title: "Ứng dụng di động",
-                              subtitle: "Mô tả ngắn về dự án...",
+                              title: "Catch The Rainbow Social Media App",
+                              subtitle: "A Social Media App with short videos and features of popular social media.",
                             ),
                             ProjectItem(
                               icon: Icons.gamepad,
-                              title: "Trò chơi Unity",
-                              subtitle: "Mô tả ngắn về dự án...",
+                              title: "Tomorrow Witch",
+                              subtitle: "2D Platformer game project developed with Unity. The game is a puzzle and exploration game. The player will control the main character, a young witch, to overcome challenges and escape the house.",
                             ),
                           ],
                           onProjectTap: scrollToProject,
                         ),
                         SizedBox(height: 24),
                         ProjectDescriptionWidget(
-                          key: projectKeys["TomorrowWitchAlternative"],
+                          key: projectKeys["Tomorrow Witch Alternative"],
                           projectName: "Tomorrow Witch Alternative",
                           youtubeUrl:
                               "https://www.youtube.com/watch?v=hKYLFoNekPI",
                           imageUrls: [
-                            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjkTpd1x5RKx_stIPW0cRaqhR2I6AA7-YId6vxg1igceiGoz3pc0cSaRCMPMxGb_xcQp5zDX44RVxucf74_M7JDJ-H_PFGRv-T7eg3jYhEk26x6fAPzcvUcNEBv9s6vDhd2QnE2xJnSBpV2jzjav3qVLTX68abKXEDt_OJrWc4E6IsOfdB0RQBKATCA_Jmx/s1600/Screenshot_20250210_145219.jpg",
-                            "https://picsum.photos/401/200",
-                            "https://picsum.photos/402/200",
+                            LinkTool.getLinkDomain(
+                              "tomorrow_witch_alternative_1.jpg",
+                            ),
+                            LinkTool.getLinkDomain(
+                              "tomorrow_witch_alternative_2.jpg",
+                            ),
+                            LinkTool.getLinkDomain(
+                              "tomorrow_witch_alternative_3.jpg",
+                            ),
                           ],
                           features: [
-                            "Gameplay mượt mà và hấp dẫn",
-                            "Giao diện người dùng thân thiện",
-                            "Tối ưu hiệu năng cho trải nghiệm tốt nhất",
+                            "Gesture Control",
+                            "Camera to track hand and head movements",
+                            "CameraX, Google ML Kit",
                           ],
                           description:
-                              "Dự án game phát triển bằng Android Native - Kotlin. Sử dụng camera phân tích cử chỉ để di chuyển và hành động.",
+                              "Game project developed with Android Native - Kotlin. Using camera to analyze gestures for movement and actions.",
+                        ),
+
+                        SizedBox(height: 24),
+                        ProjectDescriptionWidget(
+                          key:
+                              projectKeys["Catch The Rainbow Social Media App"],
+                          projectName: "Catch The Rainbow Social Media App",
+                          imageUrls: [
+                            LinkTool.getLinkDomain(
+                              "catch_the_rainbow_1.jpg",
+                            ),
+                            LinkTool.getLinkDomain(
+                              "catch_the_rainbow_2.jpg",
+                            ),
+                            LinkTool.getLinkDomain(
+                              "catch_the_rainbow_3.jpg",
+                            ),
+                          ],
+                          features: [
+                            "Android Native - Kotlin",
+                            "Fragment for swipe video, RecyclerView, Firebase",
+                            "Realtime Chat, Like, Comment",
+                          ],
+                          description:
+                              "A Social Media App with short videos and features of popular social media.",
+                        ),
+
+                        SizedBox(height: 24),
+                        ProjectDescriptionWidget(
+                          key: projectKeys["Tomorrow Witch"],
+                          projectName: "Tomorrow Witch",
+                          youtubeUrl:
+                              "https://www.youtube.com/watch?v=hKYLFoNekPI",
+                          imageUrls: [
+                            LinkTool.getLinkDomain(
+                              "tomorrow_witch_alternative_1.jpg",
+                            ),
+                            LinkTool.getLinkDomain(
+                              "tomorrow_witch_alternative_2.jpg",
+                            ),
+                            LinkTool.getLinkDomain(
+                              "tomorrow_witch_alternative_3.jpg",
+                            ),
+                          ],
+                          features: [
+                            "Unity Engine",
+                            "Using Cinemachine, Light, Shader, Particle System,...",
+                            "Optimized performance for multiple platforms",
+                          ],
+                          description:
+                              "2D Platformer game project developed with Unity. The game is a puzzle and exploration game. The player will control the main character, a young witch, to overcome challenges and escape the house.",
                         ),
                       ],
                     ),
@@ -248,82 +307,81 @@ class ProfileWidget extends StatelessWidget {
             ),
 
             // Archivements
-if (archivements.isNotEmpty) ...[
-  Align(
-    alignment: Alignment.centerLeft,
-    child: Text(
-      "Archivements",
-      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-            fontWeight: FontWeight.bold,
-          ),
-    ),
-  ),
-  const SizedBox(height: 8),
-
-  // Dùng Column thay vì Expanded + ListView
-  Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: archivements.map((text) {
-      return Padding(
-        padding: const EdgeInsets.symmetric(vertical: 4),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Icon(Icons.star, color: Colors.amber, size: 20),
-            const SizedBox(width: 8),
-            Expanded(
-              child: Text(
-                text,
-                style: Theme.of(context).textTheme.bodyMedium,
-              ),
-            ),
-          ],
-        ),
-      );
-    }).toList(),
-  ),
-
-  const Divider(
-    thickness: 1,
-    color: Colors.grey,
-    indent: 20,
-    endIndent: 20,
-  ),
-],
-
-
-              // Skills
-              if (skills.isNotEmpty) ...[
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Skills",
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
+            if (archivements.isNotEmpty) ...[
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Archivements",
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 8),
-                Wrap(
-                  spacing: 8,
-                  runSpacing: 8,
-                  children: skills.map((skill) {
-                    return Chip(
-                      label: Text(skill),
-                      avatar: const Icon(
-                        Icons.local_florist,
-                        size: 16,
-                        color: Colors.pinkAccent,
-                      ),
-                      backgroundColor: Colors.pink[50],
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                    );
-                  }).toList(),
-                ),
-              ],
+              ),
+              const SizedBox(height: 8),
+
+              // Dùng Column thay vì Expanded + ListView
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: archivements.map((text) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 4),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Icon(Icons.star, color: Colors.amber, size: 20),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: Text(
+                            text,
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                }).toList(),
+              ),
+
+              const Divider(
+                thickness: 1,
+                color: Colors.grey,
+                indent: 20,
+                endIndent: 20,
+              ),
             ],
+
+            // Skills
+            if (skills.isNotEmpty) ...[
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Skills",
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 8),
+              Wrap(
+                spacing: 8,
+                runSpacing: 8,
+                children: skills.map((skill) {
+                  return Chip(
+                    label: Text(skill),
+                    avatar: const Icon(
+                      Icons.local_florist,
+                      size: 16,
+                      color: Colors.pinkAccent,
+                    ),
+                    backgroundColor: Colors.pink[50],
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  );
+                }).toList(),
+              ),
+            ],
+          ],
         ),
       ),
     );
@@ -371,7 +429,7 @@ class ProjectWidget extends StatelessWidget {
 
 class ProjectDescriptionWidget extends StatefulWidget {
   final String projectName;
-  final String youtubeUrl;
+  final String? youtubeUrl;
   final List<String> imageUrls;
   final String description;
   final List<String> features; // thêm list tính năng
@@ -379,7 +437,7 @@ class ProjectDescriptionWidget extends StatefulWidget {
   const ProjectDescriptionWidget({
     super.key,
     required this.projectName,
-    required this.youtubeUrl,
+    this.youtubeUrl,
     required this.imageUrls,
     required this.description,
     this.features = const [], // mặc định rỗng
@@ -396,7 +454,10 @@ class _ProjectDescriptionWidgetState extends State<ProjectDescriptionWidget> {
   @override
   void initState() {
     super.initState();
-    final videoId = YoutubePlayerController.convertUrlToId(widget.youtubeUrl)!;
+    if (widget.youtubeUrl == null) {
+      return;
+    }
+    final videoId = YoutubePlayerController.convertUrlToId(widget.youtubeUrl ?? "")!;
     _controller = YoutubePlayerController.fromVideoId(
       videoId: videoId,
       autoPlay: false,
@@ -444,7 +505,7 @@ class _ProjectDescriptionWidgetState extends State<ProjectDescriptionWidget> {
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "Tính năng nổi bật",
+                  "Features",
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
@@ -515,10 +576,12 @@ class _ProjectDescriptionWidgetState extends State<ProjectDescriptionWidget> {
             const SizedBox(height: 16),
 
             // Youtube video
-            AspectRatio(
-              aspectRatio: 16 / 9,
-              child: YoutubePlayer(controller: _controller),
-            ),
+            widget.youtubeUrl != null
+                ? AspectRatio(
+                    aspectRatio: 16 / 9,
+                    child: YoutubePlayer(controller: _controller),
+                  )
+                : SizedBox(),
             const SizedBox(height: 16),
 
             // Images
